@@ -31,35 +31,62 @@ class Solution {
     // Function to insert a new node at given position in doubly linked list.
     Node *addNode(Node *head, int pos, int data) {
         // code here
-        if (head == NULL){
-            Node* newNode = new Node(data);
-            return newNode;
-        }
+        // if (head == NULL){
+        //     Node* newNode = new Node(data);
+        //     return newNode;
+        // }
+        // Node* temp = head;
+        // if (temp->next == NULL){
+        //     Node* newNode = new Node(data);
+        //     newNode->prev = temp;
+        //     temp->next = newNode;
+        //     return head;
+        // }
+        // int cnt = 0;
+        // while (temp!=NULL && temp->next!=NULL){
+        //     if (cnt == pos){
+        //         Node* newNode = new Node(data);
+        //         newNode->next = temp->next;
+        //         temp->next->prev = newNode;
+        //         newNode->prev = temp;
+        //         temp->next = newNode;
+        //     }
+        //     cnt++;
+        //     temp = temp->next;
+        // }
+        // if (temp->next == NULL && cnt==pos){
+        //     Node* newNode = new Node(data);
+        //     newNode->prev = temp;
+        //     temp->next = newNode;
+        //     return head;
+        // }
+        // return head;
+        
+        // Optimised Code:
+        if (head == NULL) return new Node(data);  // Handle empty list case
+
         Node* temp = head;
-        if (temp->next == NULL){
-            Node* newNode = new Node(data);
-            newNode->prev = temp;
-            temp->next = newNode;
-            return head;
-        }
         int cnt = 0;
-        while (temp!=NULL && temp->next!=NULL){
-            if (cnt == pos){
-                Node* newNode = new Node(data);
-                newNode->next = temp->next;
-                temp->next->prev = newNode;
-                newNode->prev = temp;
-                temp->next = newNode;
-            }
-            cnt++;
+
+        // Traverse to the position just before 'pos'
+        while (cnt < pos && temp->next != NULL) {
             temp = temp->next;
+            cnt++;
         }
-        if (temp->next == NULL && cnt==pos){
-            Node* newNode = new Node(data);
-            newNode->prev = temp;
-            temp->next = newNode;
-            return head;
+
+        // Create a new node
+        Node* newNode = new Node(data);
+
+        // Insert in the middle
+        if (temp->next != NULL) {
+            newNode->next = temp->next;
+            temp->next->prev = newNode;
         }
+        
+        // Common insertion logic (works for both middle and end)
+        newNode->prev = temp;
+        temp->next = newNode;
+
         return head;
     }
 };
