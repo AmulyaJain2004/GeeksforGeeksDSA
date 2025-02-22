@@ -70,6 +70,13 @@ class Solution {
     // Function to reverse a doubly linked list
     DLLNode* reverseDLL(DLLNode* head) {
         // Your code here
+        // Brute force approach using maintaining STACK data sructure 
+        // step1: first traversing through the list and pushing into the stack
+        // step2: popping out elements and again traversing through head and inserting them into list
+        // this will automatically reverse the list as the elements will be in reverse order.
+        
+        //Optimized code: 
+        // just swapping the links will do the job in one pass
         if (head == NULL || head->next == NULL){
             return head;
         }
