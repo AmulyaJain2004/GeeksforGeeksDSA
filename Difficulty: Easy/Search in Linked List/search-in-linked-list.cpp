@@ -14,6 +14,7 @@ struct Node {
 
 
 // } Driver Code Ends
+
 /* Link list node */
 /*
 struct Node
@@ -28,16 +29,17 @@ class Solution {
     // Function to count nodes of a linked list.
     bool searchKey(int n, Node* head, int key) {
         // Code here
-        Node* temp = head;
-        for (int i = 0; i < n; i++){
-            if (temp->data == key){
+        Node *temp = head;
+        while (temp!=NULL){
+            if (temp->data ==key){
                 return true;
             }
-            temp = temp->next;
+            temp=temp->next;
         }
         return false;
     }
 };
+
 
 
 //{ Driver Code Starts.
