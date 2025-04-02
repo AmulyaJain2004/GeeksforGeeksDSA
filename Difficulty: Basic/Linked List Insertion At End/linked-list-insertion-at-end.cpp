@@ -23,6 +23,8 @@ void printList(Node* node) {
 
 
 // } Driver Code Ends
+
+
 /*Structure of the linked list node is as
 struct Node {
   int data;
@@ -37,24 +39,22 @@ class Solution {
   public:
     Node *insertAtEnd(Node *head, int x) {
         // Code here
-        if (head==nullptr) 
-        {
+        if (head == NULL){
             Node* newNode = new Node(x);
-            head = newNode;
+            return newNode;
         }
-        else 
-        {
-            Node* temp = head;
-            while (temp->next != NULL)
-            {
-                temp = temp->next;
-            }
-            Node* newNode = new Node(x);
-            temp->next = newNode;
+        Node *temp = head;
+        while (temp->next !=NULL){
+            temp = temp->next;
         }
+        Node *newNode = new Node(x);
+        temp->next = newNode;
         return head;
     }
 };
+
+
+
 
 
 //{ Driver Code Starts.
