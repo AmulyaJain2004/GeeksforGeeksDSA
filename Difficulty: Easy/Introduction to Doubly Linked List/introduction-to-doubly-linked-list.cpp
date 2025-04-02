@@ -49,6 +49,7 @@ void printList(Node* node) {
 
 
 // } Driver Code Ends
+
 // User function Template for C++
 
 /*
@@ -77,31 +78,18 @@ class Solution {
   public:
     Node* constructDLL(vector<int>& arr) {
         // code here
-        // Node* head = new Node(arr[0]);
-        // Node* temp = head;
-        // Node* pretemp = head;
-        // for (int i = 1; i < arr.size(); i++){
-        //     Node* newNode = new Node(arr[i]);
-        //     temp->next = newNode;
-        //     temp = temp->next;
-        //     temp->prev = pretemp;
-        //     pretemp = pretemp->next;
-        // }
-        // return head;
-        
-        // Optimized:
-        if (arr.empty()) return nullptr; //Good Practice to Handle edge case
-        Node* head = new Node(arr[0]);
-        Node* temp = head;
-        for (int i = 1; i < arr.size(); i++){
-            Node* newNode = new Node(arr[i]);
+        Node *head = new Node (arr[0]);
+        Node *temp = head;
+        for (int i = 1; i< arr.size(); i++){
+            Node* newNode = new Node (arr[i]);
             temp->next = newNode;
-            newNode-> prev = temp;
-            temp = temp->next;
+            newNode->prev=temp;
+            temp = newNode;
         }
         return head;
     }
 };
+
 
 //{ Driver Code Starts.
 
