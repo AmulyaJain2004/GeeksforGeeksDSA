@@ -21,16 +21,21 @@ class Solution {
   public:
     Node *insertAtEnd(Node *head, int x) {
         // Code here
-        if (head == NULL){
+        if (head==nullptr) 
+        {
             Node* newNode = new Node(x);
-            return newNode;
+            head = newNode;
         }
-        Node *temp = head;
-        while (temp->next !=NULL){
-            temp = temp->next;
+        else 
+        {
+            Node* temp = head;
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            Node* newNode = new Node(x);
+            temp->next = newNode;
         }
-        Node *newNode = new Node(x);
-        temp->next = newNode;
         return head;
     }
 };
